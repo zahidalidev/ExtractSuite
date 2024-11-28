@@ -1,14 +1,100 @@
 import { create } from 'zustand'
+import ChatIcon from '@/assets/icons/chat.svg'
+import AutocompleteIcon from '@/assets/icons/autocomplete.svg'
+import ContextIcon from '@/assets/icons/context.svg'
+import PromptsIcon from '@/assets/icons/prompts.svg'
+
+export const sidebarItems = [
+  {
+    id: 1,
+    title: 'Chat',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+    icon: ChatIcon,
+    demoId: '6ly0v9tfnmsr',
+    isActive: true,
+    subItems: [
+      { id: '1-1', title: 'LLM Selection', description: 'Choose your preferred language model' },
+      { id: '1-2', title: 'Inline Edits', description: 'Make quick code modifications directly' },
+      { id: '1-3', title: 'Inline Bug Fix', description: 'Fix bugs without leaving your editor' },
+      {
+        id: '1-4',
+        title: 'Smart Apply/Execute',
+        description: 'Intelligent code execution and application',
+      },
+    ],
+  },
+  {
+    id: 2,
+    title: 'Autocomplete',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+    icon: AutocompleteIcon,
+    demoId: '6ly0v9tfnmsr',
+    isActive: true,
+    subItems: [
+      { id: '2-1', title: 'Smart Predictions', description: 'AI-powered code suggestions' },
+      {
+        id: '2-2',
+        title: 'Natural Language Code Generation',
+        description: 'Generate code from plain English',
+      },
+    ],
+  },
+  {
+    id: 3,
+    title: 'Context',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+    icon: ContextIcon,
+    demoId: '6ly0v9tfnmsr',
+    isActive: true,
+    subItems: [
+      { id: '3-1', title: 'Multi-Repo Context', description: 'Access code across repositories' },
+      { id: '3-2', title: '@-mention', description: 'Reference code and developers easily' },
+      { id: '3-3', title: 'OpenCTX', description: 'Open context integration' },
+    ],
+  },
+  {
+    id: 4,
+    title: 'Prompts',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+    icon: PromptsIcon,
+    demoId: '6ly0v9tfnmsr',
+    isActive: true,
+    subItems: [
+      {
+        id: '4-1',
+        title: 'Prompts & Props Library',
+        description: 'Access pre-built prompts and properties',
+      },
+      { id: '4-2', title: 'Prompt Library', description: 'Browse and use community prompts' },
+    ],
+  },
+]
+
 
 export const useTourStore = create((set) => ({
-  activeItem: {},
-  items: [],
+  items: sidebarItems,
+  activeItem: sidebarItems[0],
+  activeSubItem: sidebarItems[0].subItems[0],
+  currentStep: 0,
   completedItems: [],
-  currentStep: 1,
-  activeSubItem: null,
-  setActiveItem: (item) => set({ activeItem: item }),
-  setItems: (items) => set({ items }),
-  setCompletedItems: (items) => set({ completedItems: items }),
   setCurrentStep: (step) => set({ currentStep: step }),
-  setActiveSubItem: (subItem) => set({ activeSubItem: subItem })
+  setActiveItem: (item) => set({ 
+    activeItem: item,
+    activeSubItem: item.subItems[0],
+    currentStep: 0
+  }),
+  setActiveSubItem: (subItem) => set({ activeSubItem: subItem }),
+  setCompletedItems: (ids) => set({ completedItems: ids }),
+  setItems: (items) => set({ items }),
+  handleItemSelect: (item) => {
+    set((state) => {
+      return {
+        activeItem: item,
+        items: state.items.map((menuItem) => ({
+          ...menuItem,
+          isActive: menuItem.id === item.id || state.completedItems.includes(menuItem.id),
+        })),
+      }
+    })
+  },
 }))
