@@ -1,0 +1,122 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-color: black;
+    margin-left: 240px; 
+  }
+  
+  .card {
+    width: 65%; 
+    padding: 30px; 
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    text-align: center;
+}
+  
+  .title {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 8px;
+  }
+  
+  .subtitle {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 20px;
+  }
+  
+  .dropZone {
+    border: 2px dashed #ddd;
+    padding: 30px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .uploadInfo {
+    margin-bottom: 20px;
+    text-align: left;
+  }
+  
+  .fileItem {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  .progressBar {
+    width: 100%;
+    background-color: #f1f1f1;
+    border-radius: 8px;
+    overflow: hidden;
+    height: 10px;
+  }
+  
+  .progress {
+    background-color: #4caf50;
+    height: 100%;
+  }
+  
+  .reorderSection {
+    margin-bottom: 20px;
+    text-align: left;
+  }
+  
+  .fileList {
+    margin-top: 10px;
+  }
+  
+  .reorderItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    text-align: left;
+  }
+  
+  .reorderItem button {
+    background: none;
+    border: 1px solid #ddd;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  .reorderItem button:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+  
+  .headerOption {
+    margin-bottom: 20px;
+    text-align: left;
+  }
+  
+  .button {
+    width: 100%;
+    padding: 14px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #023246;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .button:hover {
+    background-color: #023246;
+  }
+  
+  .result {
+    font-size: 1rem;
+    color: #4caf50;
+    margin-top: 20px;
+    text-align: center;
+  }
+  

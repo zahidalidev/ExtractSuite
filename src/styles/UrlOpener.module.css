@@ -1,0 +1,119 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: black;
+  background-size: cover;
+  background-position: center;
+  margin-left: 240px; 
+}
+
+.card {
+  width: 65%;
+  padding: 40px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  text-align: center;
+}
+
+.title {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.urlInput {
+  margin-bottom: 20px;
+}
+
+.textarea {
+  width: 100%;
+  padding: 8px 1px; 
+  font-size: 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  resize: vertical;
+  padding-left: 20px; 
+  padding-top: 8px;
+}
+
+.buttonGroup {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.button {
+  width: 48%;
+  padding: 14px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: #023246;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #01202d;
+}
+
+.clearButton {
+  width: 48%;
+  padding: 14px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: #ff0000;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.clearButton:hover {
+  background-color: #6c757d;
+}
+
+.status {
+  font-size: 1.2rem;
+  color: #4caf50;
+  margin-top: 20px;
+}
+
+.foundWebsites {
+  font-size: 1.2rem;
+  color: #333;
+  margin-top: 10px;
+}
+
+.features {
+  margin-top: 40px;
+  text-align: left;
+}
+
+.features h2 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.features ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.features ul li {
+  font-size: 1rem;
+  margin-bottom: 10px;
+}

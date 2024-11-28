@@ -1,0 +1,50 @@
+.appBar {
+  background-color: white;
+  color: #050505; 
+}
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 24px;
+}
+
+.leftMenu {
+  display: flex; 
+  align-items: center;
+  margin-right: auto;
+}
+
+.appName {
+  margin-right: 24px;
+  font-weight: bold;
+  color: #023246;
+}
+
+.menuItem {
+  margin-right: 24px;
+  color: #023246;
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.rightMenu {
+  display: flex;
+  align-items: center;
+}
+
+.loginButton {
+  background-color: #d32f2f; 
+  color: white;
+  font-weight: bold;
+  margin-right: 16px;
+}
+
+.subscribeButton {
+  background-color: #ffc107; 
+  color: black;
+  font-weight: bold;
+  margin-right: 16px;
+}
