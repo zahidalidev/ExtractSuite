@@ -26,8 +26,29 @@ import CodyLogo from '../assets/icons/cody.svg'
 import Image from "next/image"
 import { Button } from "./ui/button"
 
+import { useRouter } from 'next/router'
+
 export function AppSidebar(props) {
+  const router = useRouter()
   const { items, activeItem, activeSubItem, handleItemSelect, currentStep } = useTourStore()
+
+  const handleNavigation = (item) => {
+    handleItemSelect(item)
+    switch(item.title) {
+      case 'CSV Merger':
+        router.push('/csvmerger')
+        break
+      case 'File Converter':
+        router.push('/fileconverter')
+        break
+      case 'URL Opener':
+        router.push('/urlopener')
+        break
+      case 'Chat':
+        router.push('/')
+        break
+    }
+  }
 
   console.log('currentStep', currentStep)
   console.log('activeSubItem', activeSubItem)
@@ -50,7 +71,7 @@ export function AppSidebar(props) {
             <Collapsible key={item.id} asChild defaultOpen={item.isActive}>
               <SidebarMenuItem>
                 <SidebarMenuButton
-                  onClick={() => handleItemSelect(item)}
+                  onClick={() => handleNavigation(item)}
                   className={`
                     flex items-center gap-3 px-4 py-2
                     ${activeItem.id === item.id

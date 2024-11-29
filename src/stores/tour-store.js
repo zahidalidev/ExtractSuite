@@ -1,4 +1,5 @@
 import { create } from 'zustand'
+import { useRouter } from 'next/router'
 import ChatIcon from '@/assets/icons/chat.svg'
 import AutocompleteIcon from '@/assets/icons/autocomplete.svg'
 import ContextIcon from '@/assets/icons/context.svg'
@@ -25,7 +26,7 @@ export const sidebarItems = [
   },
   {
     id: 2,
-    title: 'Autocomplete',
+    title: 'CSV Merger',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
     icon: AutocompleteIcon,
     demoId: '6ly0v9tfnmsr',
@@ -41,7 +42,7 @@ export const sidebarItems = [
   },
   {
     id: 3,
-    title: 'Context',
+    title: 'File Converter',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
     icon: ContextIcon,
     demoId: '6ly0v9tfnmsr',
@@ -54,7 +55,23 @@ export const sidebarItems = [
   },
   {
     id: 4,
-    title: 'Prompts',
+    title: 'URL Opener',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+    icon: PromptsIcon,
+    demoId: '6ly0v9tfnmsr',
+    isActive: true,
+    subItems: [
+      {
+        id: '4-1',
+        title: 'Prompts & Props Library',
+        description: 'Access pre-built prompts and properties',
+      },
+      { id: '4-2', title: 'Prompt Library', description: 'Browse and use community prompts' },
+    ],
+  },
+  {
+    id: 5,
+    title: 'Web Builder',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
     icon: PromptsIcon,
     demoId: '6ly0v9tfnmsr',
@@ -78,11 +95,27 @@ export const useTourStore = create((set) => ({
   currentStep: 0,
   completedItems: [],
   setCurrentStep: (step) => set({ currentStep: step }),
-  setActiveItem: (item) => set({ 
-    activeItem: item,
-    activeSubItem: item.subItems[0],
-    currentStep: 0
-  }),
+  setActiveItem: (item) => {
+    // Handle navigation based on item title
+    if (typeof window !== 'undefined') {
+      const router = useRouter()
+      switch(item.title) {
+        case 'CSV Merger':
+          router.push('/csvmerger')
+          break
+        case 'File Converter':
+          router.push('/fileconverter')
+          break
+        // Add other cases as needed
+      }
+    }
+    
+    set({ 
+      activeItem: item,
+      activeSubItem: item.subItems[0],
+      currentStep: 0
+    })
+  },
   setActiveSubItem: (subItem) => set({ activeSubItem: subItem }),
   setCompletedItems: (ids) => set({ completedItems: ids }),
   setItems: (items) => set({ items }),
