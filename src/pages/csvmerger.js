@@ -113,20 +113,24 @@ export default function Home() {
           </div>
 
           <div className="h-[90vh] w-[100%] max-w-7xl rounded-xl bg-muted/50 p-10 flex flex-col gap-4 text-white shadow-lg mt-4">
-            <div className={styles.uploadSection}>
+          <div className={styles.uploadSection}>
             <p className={`${styles.dragDropText} mb-4`}>Drag & Drop CSV files here</p>
-              <div className={styles.dropZone}
-                onDrop={handleFileDrop}
-                onDragOver={(e) => e.preventDefault()}>
-                <input
-                  type="file"
-                  accept=".csv"
-                  multiple
-                  onChange={handleFileSelect}
-                  className={styles.input}
-                />
-              </div>
+            <div
+              className={`${styles.dropZone} bg-gray-700 p-4 rounded-md border border-gray-700`} // added border and border style
+              onDrop={handleFileDrop}
+              onDragOver={(e) => e.preventDefault()}
+            >
+              <input
+                type="file"
+                accept=".csv"
+                multiple
+                onChange={handleFileSelect}
+                className="w-full bg-transparent text-white placeholder-left border-none" // make the input border transparent
+                placeholder="Choose or drag and drop files"
+              />
             </div>
+          </div>
+
             {/* Rest of your existing CSV merger components */}
             <div className={styles.uploadInfo}>
               <p><strong>Step 1:</strong> Upload your CSV files</p>

@@ -35,6 +35,9 @@ export function AppSidebar(props) {
   const handleNavigation = (item) => {
     handleItemSelect(item)
     switch(item.title) {
+      case 'Email Extractor':
+        router.push('/')
+        break 
       case 'CSV Merger':
         router.push('/csvmerger')
         break
@@ -44,8 +47,8 @@ export function AppSidebar(props) {
       case 'URL Opener':
         router.push('/urlopener')
         break
-      case 'Chat':
-        router.push('/')
+      case 'Web Builder':
+        router.push('/webbuilder')
         break
     }
   }
@@ -70,16 +73,7 @@ export function AppSidebar(props) {
           {items.map((item) => (
             <Collapsible key={item.id} asChild defaultOpen={item.isActive}>
               <SidebarMenuItem>
-                <SidebarMenuButton
-                  onClick={() => handleNavigation(item)}
-                  className={`
-                    flex items-center gap-3 px-4 py-2
-                    ${activeItem.id === item.id
-                      ? 'bg-sidebar-accent text-sidebar-primary-foreground'
-                      : ''
-                    }
-                  `}
-                >
+                <SidebarMenuButton>
                   <Image alt="cody" className="size-4" src={item.icon} />
                   <span className="flex-1 truncate text-sm">{item.title}</span>
                 </SidebarMenuButton>
