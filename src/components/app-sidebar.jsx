@@ -73,7 +73,7 @@ export function AppSidebar(props) {
           {items.map((item) => (
             <Collapsible key={item.id} asChild defaultOpen={item.isActive}>
               <SidebarMenuItem>
-                <SidebarMenuButton>
+                <SidebarMenuButton onClick={() => handleNavigation(item)}>
                   <Image alt="cody" className="size-4" src={item.icon} />
                   <span className="flex-1 truncate text-sm">{item.title}</span>
                 </SidebarMenuButton>

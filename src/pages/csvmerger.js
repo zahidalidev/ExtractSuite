@@ -95,8 +95,8 @@ export default function Home() {
                 </BreadcrumbItem>
                 <BreadcrumbSeparator className="hidden md:block" />
                 <BreadcrumbItem>
-                  <BreadcrumbPage className="text-white">
-                    Data Fetching
+                  <BreadcrumbPage className="text-white"> 
+                  {/* Data Fetching */}
                   </BreadcrumbPage>
                 </BreadcrumbItem>
               </BreadcrumbList>
