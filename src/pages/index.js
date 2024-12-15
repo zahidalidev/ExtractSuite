@@ -37,9 +37,6 @@ export default function Home() {
     setWebsites(e.target.value);
   };
 
-
-  console.log('selectedExtractionOptions', selectedExtractionOptions)
-
   const handleExtractEmails = async () => {
     if (!websites.trim()) {
       alert('Please enter at least one website');
@@ -66,7 +63,6 @@ export default function Home() {
       // Convert results to array if it's not already
       setScrapingResults(Array.isArray(results) ? results : [results]);
     } catch (error) {
-      console.error('Scraping error:', error);
       alert('Failed to extract emails. Please try again.');
     } finally {
       setIsLoading(false);
@@ -90,7 +86,7 @@ export default function Home() {
       <AppSidebar />
       <SidebarInset>
         <header className="flex h-16 shrink-0 items-center gap-2">
-          <div className="flex items-center gap-2 px-4">
+          <div className="flex items-center w-[30%] gap-2 px-4">
             <SidebarTrigger className="-ml-1" />
             <Separator orientation="vertical" className="mr-2 h-4" />
             <Breadcrumb>
@@ -109,23 +105,24 @@ export default function Home() {
               </BreadcrumbList>
             </Breadcrumb>
           </div>
-        </header>
-        <div className="flex flex-1 flex-col items-center justify-center p-6 w-[100%] mx-auto">
-          <div className="relative z-10 text-center">
-            <h1 className="text-5xl font-bold text-white">WEB EMAIL FINDER</h1>
-            <p className="text-gray-300 text-lg mt-2 mb-6">
-              Extract email addresses and phone numbers from any websites!
-            </p>
-          </div>
 
-          <div className="relative z-10 bg-gray-700 shadow-md rounded-lg p-2 flex justify-between mt-2 w-[85%] max-w-7xl mx-auto">
+          <div className="relative z-10 text-center items-center w-[35%] justify-center">
+            <h1 className="text-2xl md:text-3xl lg:text-5xl font-bold text-white mt-14">WEB SCRAPPER</h1>
+            {/* <p className="text-gray-300 text-lg mt-2 mb-6">
+              Extract email addresses and phone numbers from any websites!
+            </p> */}
+          </div>
+        </header>
+
+        <div className="flex flex-1 flex-col items-center justify-center p-6 w-[100%] mx-auto mt-8">
+          <div className="relative z-10 bg-[rgba(255,255,255,0.06)] border border-gray-700 shadow-md rounded-lg p-[5px] flex justify-between mt-2 w-[95%] max-w-7xl mx-auto">
             {['Text Input', 'Excel Input'].map((option, index) => (
               <button
                 key={index}
                 onClick={() => handleSelect(option)}
-                className={`w-1/2 px-4 py-2 rounded transition ${selectedOption === option
+                className={`w-1/2 px-4 py-[8px] rounded transition ${selectedOption === option
                   ? 'bg-gray-600 text-white hover:bg-gray-500'
-                  : 'bg-gray-700 text-gray-300 hover:bg-gray-600 hover:shadow-lg'
+                  : ' text-gray-300 hover:bg-gray-600 hover:shadow-lg'
                   }`}
               >
                 {option}
@@ -133,7 +130,7 @@ export default function Home() {
             ))}
           </div>
 
-          <div className="h-[90vh] w-[100%] max-w-7xl rounded-xl bg-muted/50 p-10 flex flex-col gap-8 text-white shadow-lg mt-4">
+          <div className="h-[90vh] w-[100%] max-w-7xl rounded-xl border border-gray-700 p-10 flex flex-col gap-8 text-white shadow-lg mt-4">
             <div className="flex flex-col gap-6">
               <div className="flex flex-col gap-4">
                 {selectedOption === 'Text Input' ? (
@@ -142,13 +139,14 @@ export default function Home() {
                       Enter Domains/URLs
                     </label>
                     <textarea
+                      rows="7"
                       id="domainInput"
-                      className="resize rounded border p-6 bg-gray-700 text-white text-sm"
-                      placeholder="Enter comma separated domains/URLs (e.g: https://www.examplelink1.pk/,https://examplelink2.com/)"
+                      className="resize rounded border p-4 bg-gray-700 text-white text-sm"
+                      placeholder="Enter comma separated website URLs e.g: https://www.examplelink1.pk,https://examplelink2.com"
                       value={websites}
                       onChange={handleWebsitesInput}
                     />
-                    <p className="text-gray-400 text-xs mt-1 mb-3">0/50 Unique Websites entered</p>
+                    <p className="text-gray-400 text-xs mb-3">0/50 Unique Websites entered</p>
                   </>
                 ) : selectedOption === 'Excel Input' ? (
                   <>
@@ -211,25 +209,6 @@ export default function Home() {
                     ))}
                   </div>
                 </div>
-
-                {/* <div className="w-1/2">
-                  <label className="font-bold text-lg">Select Email Mode</label>
-                  <div className="flex flex-col gap-3 mt-2">
-                    {emailOptions.map((mode, index) => (
-                      <div key={index} className="flex items-center gap-3">
-                        <input
-                          type="radio"
-                          name="emailMode"
-                          id={`mode-${index}`}
-                          className="accent-white"
-                        />
-                        <label htmlFor={`mode-${index}`} className="text-white text-sm">
-                          {mode}
-                        </label>
-                      </div>
-                    ))}
-                  </div>
-                </div> */}
               </div>
               <div className="flex justify-center gap-4 my-0">
                 <button

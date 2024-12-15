@@ -3,6 +3,7 @@
 import * as React from "react"
 import { ChevronRight } from "lucide-react"
 import { useTourStore } from "@/stores/tour-store"
+import { useRouter } from 'next/router'
 import {
   Sidebar,
   SidebarContent,
@@ -23,10 +24,8 @@ import {
 } from "@/components/ui/collapsible"
 
 import CodyLogo from '../assets/icons/cody.svg'
-import Image from "next/image"
 import { Button } from "./ui/button"
 
-import { useRouter } from 'next/router'
 
 export function AppSidebar(props) {
   const router = useRouter()
@@ -53,16 +52,13 @@ export function AppSidebar(props) {
     }
   }
 
-  console.log('currentStep', currentStep)
-  console.log('activeSubItem', activeSubItem)
-
   return (
     <Sidebar variant="inset" {...props}>
       <SidebarHeader>
         <SidebarMenu>
           <SidebarMenuItem>
             <div className="grid flex-1 text-sm leading-tight justify-center items-center">
-              <Image src={CodyLogo} alt="cody" width={150} />
+              <CodyLogo alt="cody" width={500} />
             </div>
           </SidebarMenuItem>
         </SidebarMenu>
@@ -73,8 +69,15 @@ export function AppSidebar(props) {
           {items.map((item) => (
             <Collapsible key={item.id} asChild defaultOpen={item.isActive}>
               <SidebarMenuItem>
-                <SidebarMenuButton onClick={() => handleNavigation(item)}>
-                  <Image alt="cody" className="size-4" src={item.icon} />
+                <SidebarMenuButton 
+                  onClick={() => handleNavigation(item)}
+                  className={`${
+                    activeItem?.id === item.id 
+                      ? 'text-current hover:text-current bg-sidebar-accent hover:bg-sidebar-accent' 
+                      : 'text-gray-400 hover:text-sidebar-accent-foreground hover:bg-sidebar-accent'
+                  }`}
+                >
+                  <item.icon style={{width: '20px', height: '20px'}}  />
                   <span className="flex-1 truncate text-sm">{item.title}</span>
                 </SidebarMenuButton>
                 {item.subItems?.length && (
@@ -119,7 +122,7 @@ export function AppSidebar(props) {
                 className="w-[180px] bg-[linear-gradient(92.92deg,_#ffffffe6,_#ffffffb3)] text-black hover:opacity-90 transition-opacity
           py-6 px-12 rounded-sm shadow-lg text-sm flex-grow flex items-center justify-center"
               >
-                Contact Sales
+                Contact Support
               </Button>
             </div>
           </SidebarMenuItem>
