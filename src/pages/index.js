@@ -115,7 +115,7 @@ export default function Home() {
         </header>
 
         <div className="flex flex-1 flex-col items-center justify-center p-6 w-[100%] mx-auto mt-8">
-          <div className="relative z-10 bg-[rgba(255,255,255,0.06)] border border-gray-700 shadow-md rounded-lg p-[5px] flex justify-between mt-2 w-[95%] max-w-7xl mx-auto">
+          <div className="relative z-10 border border-gray-700 shadow-md rounded-lg p-[5px] flex justify-between mt-2 w-[95%] max-w-7xl mx-auto">
             {['Text Input', 'Excel Input'].map((option, index) => (
               <button
                 key={index}
