@@ -1,4 +1,6 @@
 const domains = [
+    '@gmail',
+    '@yahoo',
     '@domain',
     'info@',
     'sales@',
@@ -14,9 +16,7 @@ const domains = [
     'office@',
     'mail@',
     'enquiries@',
-    '@gmail',
     '@hotmail',
-    '@yahoo'
 ]
 
 const extractOptions = [

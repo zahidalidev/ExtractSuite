@@ -15,7 +15,7 @@ import {
   SidebarTrigger,
 } from "@/components/ui/sidebar";
 import { useState } from 'react';
-import { scrapeWebsites } from '@/services/api';
+import { scrapeWebsites } from '@/services/scrap';
 import { domains, extractOptions, emailOptions } from '@/constants/generic';
 
 export default function Home() {
@@ -136,7 +136,7 @@ export default function Home() {
                 {selectedOption === 'Text Input' ? (
                   <>
                     <label htmlFor="domainInput" className="font-bold text-lg">
-                      Enter Domains/URLs
+                      Enter Website URLs
                     </label>
                     <textarea
                       rows="7"

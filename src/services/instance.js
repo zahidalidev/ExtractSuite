@@ -1,7 +1,9 @@
 import ky from 'ky'
 
+const baseUrl = 'http://localhost:5002/api/'
+
 export const instance = ky.extend({
-    prefixUrl: 'http://localhost:5000/api/',
+    prefixUrl: baseUrl,
     timeout: 600000
 })
 
