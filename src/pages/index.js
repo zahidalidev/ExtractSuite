@@ -59,9 +59,10 @@ export default function Home() {
         extractOptions: extractOptionsPayload,
       };
 
-      const results = await scrapeWebsites(payload);
+      const {data} = await scrapeWebsites(payload);
       // Convert results to array if it's not already
-      setScrapingResults(Array.isArray(results) ? results : [results]);
+      console.log('Response: ', data.length)
+      setScrapingResults(data);
     } catch (error) {
       alert('Failed to extract emails. Please try again.');
     } finally {
